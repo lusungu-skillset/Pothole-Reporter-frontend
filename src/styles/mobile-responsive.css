@@ -1,0 +1,401 @@
+/* ===== MOBILE RESPONSIVENESS ===== */
+
+/* Viewport and base scaling */
+@media (max-width: 640px) {
+  :root {
+    --gap: 0.75rem;
+    --max-width: 100%;
+  }
+
+  html, body {
+    font-size: 16px; /* Prevent zoom on input focus in iOS */
+  }
+
+  /* Container padding for mobile */
+  .container {
+    padding: 0.75rem;
+    width: 100%;
+  }
+
+  /* Report card mobile sizing */
+  .report-card {
+    width: calc(100% - 1.5rem);
+    margin: 2rem auto;
+    padding: 1.5rem;
+    border-radius: 16px;
+  }
+
+  .report-title {
+    font-size: 1.25rem;
+    margin-bottom: 1.25rem;
+  }
+
+  .form-group {
+    margin-bottom: 1rem;
+  }
+
+  .form-label {
+    font-size: 0.7rem;
+    margin-bottom: 0.35rem;
+  }
+
+  /* Form inputs mobile sizing */
+  .input, textarea {
+    padding: 0.75rem;
+    font-size: 16px; /* Prevents iOS zoom on focus */
+    border-radius: 8px;
+  }
+
+  /* Form row stacking */
+  .form-row {
+    flex-direction: column;
+    gap: 0.75rem;
+  }
+
+  /* Buttons touch-friendly sizing */
+  .btn {
+    padding: 0.75rem 1rem;
+    font-size: 0.95rem;
+    min-height: 44px; /* Touch-friendly minimum */
+    min-width: 44px;
+  }
+
+  .submit-btn {
+    padding: 1rem;
+    font-size: 0.95rem;
+    min-height: 44px;
+    margin-top: 1rem;
+  }
+
+  /* File input mobile */
+  .file-input-wrapper {
+    padding: 1.5rem 1rem;
+  }
+
+  /* Textarea mobile */
+  .textarea {
+    min-height: 120px;
+    font-size: 16px;
+  }
+
+  /* Navbar mobile optimizations */
+  .navbar {
+    position: sticky;
+    top: 0;
+  }
+
+  .nav-inner {
+    padding: 0.5rem 0.75rem;
+    gap: 0.5rem;
+  }
+
+  .brand {
+    font-size: 1rem;
+    gap: 0.5rem;
+  }
+
+  .theme-toggle {
+    font-size: 1rem;
+    padding: 0.4rem;
+  }
+
+  .nav-actions {
+    gap: 0.25rem;
+  }
+
+  /* Table responsiveness */
+  .pothole-table {
+    font-size: 0.85rem;
+  }
+
+  /* Modal mobile */
+  [style*="position: fixed"] {
+    max-width: calc(100vw - 1rem) !important;
+    max-height: 90vh;
+  }
+
+  /* Grid adjustments */
+  .stat-grid {
+    grid-template-columns: 1fr;
+    gap: 1rem;
+  }
+
+  /* Full-bleed sections */
+  .full-bleed {
+    width: 100vw;
+    margin-left: calc(-50vw + 50%);
+    margin-right: calc(-50vw + 50%);
+  }
+
+  /* Image grid mobile */
+  .image-grid {
+    grid-template-columns: repeat(auto-fit, minmax(80px, 1fr));
+    gap: 0.5rem;
+  }
+
+  .image-preview {
+    height: 80px;
+  }
+
+  /* Scroll snap for better scrolling experience */
+  html {
+    scroll-behavior: smooth;
+  }
+}
+
+/* Tablet responsiveness (641px - 1024px) */
+@media (min-width: 641px) and (max-width: 1024px) {
+  .container {
+    padding: 1rem;
+  }
+
+  .report-card {
+    max-width: 95%;
+    padding: 2rem;
+  }
+
+  .report-title {
+    font-size: 1.4rem;
+  }
+
+  /* Tablet grid layout */
+  .stat-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1.25rem;
+  }
+
+  .btn {
+    padding: 0.65rem 1rem;
+  }
+
+  .input, textarea {
+    padding: 0.65rem;
+    font-size: 15px;
+  }
+}
+
+/* Large mobile optimization (max-width: 480px) */
+@media (max-width: 480px) {
+  .report-card {
+    margin: 1.5rem auto;
+    padding: 1.25rem;
+  }
+
+  .report-title {
+    font-size: 1.1rem;
+    margin-bottom: 1rem;
+  }
+
+  .form-group {
+    margin-bottom: 0.85rem;
+  }
+
+  .form-row {
+    gap: 0.5rem;
+  }
+
+  .btn {
+    padding: 0.65rem 0.85rem;
+    font-size: 0.9rem;
+  }
+
+  /* Ensure touch targets are at least 44x44px */
+  .btn, .input, textarea, select, .submit-btn {
+    min-height: 44px;
+  }
+
+  .nav-inner {
+    padding: 0.4rem 0.5rem;
+  }
+
+  .mobile-menu-btn {
+    min-width: 44px;
+    min-height: 44px;
+    font-size: 1.25rem;
+  }
+
+  h1, h2 {
+    font-size: 1.25rem;
+  }
+
+  h3 {
+    font-size: 1rem;
+  }
+
+  p {
+    font-size: 0.9rem;
+  }
+}
+
+/* Landscape orientation adjustments */
+@media (max-height: 500px) and (orientation: landscape) {
+  .navbar {
+    padding: 0.3rem 0.5rem;
+  }
+
+  .report-card {
+    margin: 1rem auto;
+    padding: 1rem;
+  }
+
+  .form-group {
+    margin-bottom: 0.75rem;
+  }
+}
+
+/* Extra small devices (max-width: 360px) */
+@media (max-width: 360px) {
+  .container {
+    padding: 0.5rem;
+  }
+
+  .report-card {
+    width: calc(100% - 1rem);
+    padding: 1rem;
+    margin: 1rem auto;
+  }
+
+  .report-title {
+    font-size: 1rem;
+  }
+
+  .form-label {
+    font-size: 0.65rem;
+  }
+
+  .btn {
+    padding: 0.6rem 0.8rem;
+    font-size: 0.85rem;
+  }
+
+  .input, textarea {
+    padding: 0.6rem;
+    font-size: 15px;
+  }
+}
+
+/* Improved touch feedback */
+@media (hover: none) and (pointer: coarse) {
+  /* Mobile/Touch devices */
+  .btn, a, button {
+    -webkit-tap-highlight-color: rgba(11, 100, 209, 0.2);
+    -webkit-touch-callout: none;
+  }
+
+  /* Increase touch target size */
+  .btn, button, a[role="button"], input[type="button"], input[type="submit"] {
+    min-height: 48px;
+    min-width: 48px;
+  }
+
+  /* Prevent text selection on long press */
+  input, textarea, select {
+    -webkit-user-select: text;
+    user-select: text;
+  }
+}
+
+/* Safe area support for notched devices */
+@supports (padding: max(0px)) {
+  body {
+    padding-left: max(0px, env(safe-area-inset-left));
+    padding-right: max(0px, env(safe-area-inset-right));
+  }
+
+  .navbar {
+    padding-top: max(0.5rem, env(safe-area-inset-top));
+  }
+}
+
+/* Additional targeted mobile fixes: hero buttons, mobile nav, hide homepage report form */
+@media (max-width: 640px) {
+  /* Make hero action buttons stack and fill width on small screens */
+  .hero-actions {
+    display: flex !important;
+    flex-direction: column;
+    gap: 0.75rem !important;
+    width: 100%;
+  }
+
+  .hero-actions a {
+    display: inline-flex !important;
+    align-items: center;
+    justify-content: center;
+    width: 100% !important;
+    padding: 0.9rem 1rem !important;
+    font-weight: 700;
+    border-radius: 999px !important;
+    box-shadow: none !important;
+  }
+
+  /* Improve the appearance of the mobile navigation menu */
+  .nav-links {
+    right: 0;
+    left: 0;
+    top: 56px;
+    display: none;
+  }
+
+  .nav-links.mobile-open {
+    display: flex;
+    position: absolute;
+    flex-direction: column;
+    gap: 0.5rem;
+    padding: 0.5rem 0.5rem;
+    background: var(--color-surface);
+    border-bottom-left-radius: 12px;
+    border-bottom-right-radius: 12px;
+    box-shadow: 0 8px 20px rgba(0,0,0,0.12);
+    z-index: 9999;
+    align-items: flex-start;
+  }
+
+  .nav-links.mobile-open .nav-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.6rem;
+    width: auto;
+    padding: 0.6rem 0.85rem;
+    margin: 0;
+    border-radius: 10px;
+    text-align: left;
+    background: transparent;
+    color: var(--color-text);
+    border: none;
+    font-weight: 600;
+    box-shadow: none;
+  }
+
+  .nav-links.mobile-open .nav-link.primary {
+    background: linear-gradient(90deg, rgba(11,100,209,0.95), rgba(9,79,176,0.95));
+    color: #fff;
+    padding: 0.65rem 0.9rem;
+    border-radius: 10px;
+    box-shadow: 0 6px 12px rgba(11,100,209,0.08);
+  }
+
+  /* Make theme toggle and menu button uniform size and alignment */
+  .theme-toggle, .mobile-menu-btn {
+    width: 44px;
+    height: 44px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 8px;
+    background: transparent;
+    border: none;
+    color: var(--color-text);
+    font-size: 1.05rem;
+    padding: 0;
+  }
+
+  .mobile-menu-btn {
+    box-shadow: 0 4px 10px rgba(0,0,0,0.08);
+  }
+
+  /* Hide the report form on the homepage when on phones to reduce clutter */
+  .homepage .report-card {
+    display: none !important;
+  }
+}
+
