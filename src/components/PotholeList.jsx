@@ -232,7 +232,7 @@ export default function PotholeList({
             />
           </div>
 
-          {/* STATUS FILTER */}
+      
           <div>
             <label style={{ display: "block", fontSize: "0.85rem", fontWeight: 600, marginBottom: "0.4rem", color: "#d4d4d4" }}>
               Status
@@ -261,7 +261,7 @@ export default function PotholeList({
             </select>
           </div>
 
-          {/* SEVERITY FILTER */}
+    
           <div>
             <label style={{ display: "block", fontSize: "0.85rem", fontWeight: 600, marginBottom: "0.4rem", color: "#d4d4d4" }}>
               Severity
@@ -279,7 +279,7 @@ export default function PotholeList({
                 border: "1px solid #8B5C2A",
                 borderRadius: "8px",
                 fontSize: "0.9rem",
-                background: "#A0522D", // brown
+                background: "#A0522D", 
                 color: "#fff",
               }}
             >
@@ -291,7 +291,7 @@ export default function PotholeList({
             </select>
           </div>
 
-          {/* DISTRICT FILTER */}
+        
           <div>
             <label style={{ display: "block", fontSize: "0.85rem", fontWeight: 600, marginBottom: "0.4rem", color: "#d4d4d4" }}>
               District
@@ -322,7 +322,7 @@ export default function PotholeList({
             </select>
           </div>
 
-          {/* DATE FROM */}
+    
           <div>
             <label style={{ display: "block", fontSize: "0.85rem", fontWeight: 600, marginBottom: "0.4rem", color: "#d4d4d4" }}>
               Date From
@@ -344,7 +344,7 @@ export default function PotholeList({
             />
           </div>
 
-          {/* DATE TO */}
+      
           <div>
             <label style={{ display: "block", fontSize: "0.85rem", fontWeight: 600, marginBottom: "0.4rem", color: "#d4d4d4" }}>
               Date To
@@ -366,7 +366,7 @@ export default function PotholeList({
             />
           </div>
 
-          {/* SORT */}
+    
           <div>
             <label style={{ display: "block", fontSize: "0.85rem", fontWeight: 600, marginBottom: "0.4rem", color: "#d4d4d4" }}>
               Sort By
@@ -392,13 +392,13 @@ export default function PotholeList({
           </div>
         </div>
 
-        {/* RESULTS SUMMARY */}
+  
         <div style={{ fontSize: "0.9rem", color: "#9ca3af" }}>
           Showing <strong>{sortedPotholes.length}</strong> of <strong>{potholes.length}</strong> potholes
         </div>
       </div>
 
-      {/* BULK ACTIONS */}
+      
       {showBulkActions && (
         <div
           style={{
@@ -465,7 +465,7 @@ export default function PotholeList({
         </div>
       )}
 
-      {/* ACTION BUTTONS */}
+    
       <div style={{ display: "flex", gap: "0.75rem" }}>
         <button
           onClick={handleExportCSV}
@@ -484,7 +484,7 @@ export default function PotholeList({
         </button>
       </div>
 
-      {/* POTHOLE TABLE */}
+  
       {sortedPotholes.length === 0 ? (
         <div
           style={{
@@ -673,7 +673,7 @@ export default function PotholeList({
                           style={{
                             width: "100%",
                             padding: "0.75rem 1rem",
-                            background: "#A0522D", // brown
+                            background: "#A0522D", 
                             color: "#fff",
                             border: "none",
                             textAlign: "left",
@@ -729,7 +729,7 @@ export default function PotholeList({
                                 fontSize: "0.85rem",
                                 fontWeight: 600,
                                 cursor: "pointer",
-                                color: "#e6e6e6",
+                                color: "#141313ff",
                                 appearance: "none",
                                 paddingRight: "2rem",
                                 backgroundImage: "url(\"data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12'%3E%3Cpath fill='%23e6e6e6' d='M6 9L1 4h10z'/%3E%3C/svg%3E\")",
