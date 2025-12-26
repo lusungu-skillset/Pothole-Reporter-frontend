@@ -276,11 +276,11 @@ export default function PotholeList({
               style={{
                 width: "100%",
                 padding: "0.6rem",
-                border: "1px solid #404040",
+                border: "1px solid #8B5C2A",
                 borderRadius: "8px",
                 fontSize: "0.9rem",
-                background: "#323232",
-                color: "#e6e6e6",
+                background: "#A0522D", // brown
+                color: "#fff",
               }}
             >
               <option value="all">All Severities</option>
@@ -673,17 +673,17 @@ export default function PotholeList({
                           style={{
                             width: "100%",
                             padding: "0.75rem 1rem",
-                            background: "transparent",
-                            color: "#e6e6e6",
+                            background: "#A0522D", // brown
+                            color: "#fff",
                             border: "none",
                             textAlign: "left",
                             fontSize: "0.85rem",
                             cursor: "pointer",
-                            borderBottom: "1px solid #2a2a2a",
+                            borderBottom: "1px solid #8B5C2A",
                             transition: "background 0.2s ease",
                           }}
-                          onMouseEnter={(e) => e.target.style.background = "#2a2a2a"}
-                          onMouseLeave={(e) => e.target.style.background = "transparent"}
+                          onMouseEnter={(e) => e.target.style.background = "#8B5C2A"}
+                          onMouseLeave={(e) => e.target.style.background = "#A0522D"}
                         >
                           👁️ View Details
                         </button>

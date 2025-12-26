@@ -144,6 +144,15 @@ export default function ReportForm({ selectedLocation, onSubmit }) {
       onChange={(e) =>
         setFormData({ ...formData, severity: e.target.value })
       }
+      style={{
+        width: "100%",
+        padding: "0.6rem",
+        border: "1px solid #8B5C2A",
+        borderRadius: "8px",
+        fontSize: "0.9rem",
+        background: "#A0522D", // brown
+        color: "#fff",
+      }}
     >
       <option value="LOW">Low</option>
       <option value="MEDIUM">Medium</option>
