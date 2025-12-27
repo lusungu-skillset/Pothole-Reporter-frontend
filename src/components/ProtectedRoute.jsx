@@ -1,7 +1,7 @@
 "use client"
 import { useEffect, useState } from "react"
 import { useRouter } from "next/router"
-import axios from "axios"
+
 
 export default function ProtectedRoute({ children }) {
   const router = useRouter()

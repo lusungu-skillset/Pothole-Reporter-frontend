@@ -84,7 +84,7 @@ export default function LoginPage() {
        
 
         <form onSubmit={handleLogin}>
-          {/* EMAIL */}
+          
           <div style={{ marginBottom: "1.25rem" }}>
             <label style={{
               display: "block",
@@ -112,7 +112,7 @@ export default function LoginPage() {
             />
           </div>
 
-          {/* PASSWORD */}
+          
           <div style={{ marginBottom: "1.5rem" }}>
             <label style={{
               display: "block",
@@ -140,7 +140,7 @@ export default function LoginPage() {
             />
           </div>
 
-          {/* ERROR */}
+    
           {error && (
             <div style={{
               background: "#7f1d1d",
@@ -154,7 +154,7 @@ export default function LoginPage() {
             </div>
           )}
 
-          {/* BUTTON */}
+        
           <button
             type="submit"
             disabled={loading}

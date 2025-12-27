@@ -243,9 +243,9 @@ export default function HomePage() {
         const potholes = Array.isArray(data) ? data : []
 
         const reported = potholes.length
-        // Fixed status check - backend returns "Resolved", not "fixed"
+        
         const repaired = potholes.filter((p) => p.status?.toLowerCase() === "resolved").length
-        // Pending status check
+        
         const pending = potholes.filter((p) => p.status?.toLowerCase() === "pending").length
 
         console.log("Stats calculation:", { reported, repaired, pending })

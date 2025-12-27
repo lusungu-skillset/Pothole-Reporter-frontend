@@ -13,10 +13,8 @@ export default function Map({ potholes = [], onSelect }) {
       import("react-leaflet"),
       import("leaflet"),
     ]).then(([RL, LeafletLib]) => {
-      // Store the Leaflet library
       setL(LeafletLib)
 
-      // Fix Leaflet icon issue in Next.js
       try {
         delete LeafletLib.Icon.Default.prototype._getIconUrl
         LeafletLib.Icon.Default.mergeOptions({
@@ -28,7 +26,6 @@ export default function Map({ potholes = [], onSelect }) {
         console.warn("Error setting Leaflet default icon:", err)
       }
 
-      // Create custom severity-based icons
       try {
         window.icons = {
           Minor: new LeafletLib.Icon({
@@ -78,7 +75,6 @@ export default function Map({ potholes = [], onSelect }) {
         console.warn("Error creating custom icons:", err)
       }
 
-      // Load Leaflet CSS
       const href = "https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
       if (!document.querySelector(`link[href="${href}"]`)) {
         const link = document.createElement("link")
@@ -207,11 +203,9 @@ export default function Map({ potholes = [], onSelect }) {
           />
 
           {filteredPotholes.map(p => {
-            // Use pre-created icon or fallback to default
             let icon = window.icons?.[p.severity]
             
             if (!icon && L) {
-              // Create fallback icon if not pre-created
               const iconColor = {
                 "Low": "green",
                 "Medium": "orange", 

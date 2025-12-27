@@ -1,10 +1,10 @@
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
 
 :root {
-  /* Color palette (accessible contrasts) */
-  --color-primary: #0b64d1; /* vivid blue */
+  
+  --color-primary: #0b64d1; 
   --color-primary-600: #094fb0;
-  --color-accent: #00b894; /* teal */
+  --color-accent: #00b894; 
   --color-bg: #f6f8fb;
   --color-surface: #ffffff;
   --color-muted: #6b7280;
@@ -13,17 +13,17 @@
   --color-warning: #f59e0b;
   --color-success: #16a34a;
 
-  /* Layout */
+
   --max-width: 1100px;
   --radius: 10px;
   --gap: 1rem;
 }
 
-/* Dark Mode */
+
 [data-theme="dark"] {
-  --color-primary: #3b82f6; /* lighter blue for contrast */
+  --color-primary: #3b82f6; 
   --color-primary-600: #2563eb;
-  --color-accent: #10b981; /* teal */
+  --color-accent: #10b981; 
   --color-bg: #0f1419;
   --color-surface: #1a202d;
   --color-muted: #9ca3af;
@@ -44,7 +44,7 @@ html, body {
   transition: background-color 0.3s ease, color 0.3s ease;
 }
 
-/* Utility container */
+
 .container {
   width: 100%;
   max-width: var(--max-width);
@@ -52,7 +52,6 @@ html, body {
   padding: 1rem;
 }
 
-/* Typography */
 h1, h2, h3, h4, h5 {
   margin: 0 0 0.5rem 0;
   color: var(--color-text);
@@ -60,7 +59,6 @@ h1, h2, h3, h4, h5 {
 
 p { margin: 0 0 1rem 0; color: var(--color-muted); }
 
-/* Cards */
 .card {
   background: var(--color-surface);
   border-radius: var(--radius);
@@ -69,7 +67,6 @@ p { margin: 0 0 1rem 0; color: var(--color-muted); }
   border: 1px solid rgba(3, 3, 3, 0.04);
 }
 
-/* Buttons */
 .btn {
   display: inline-flex;
   align-items: center;
@@ -90,7 +87,7 @@ p { margin: 0 0 1rem 0; color: var(--color-muted); }
 .btn-secondary { background: transparent; color: var(--color-primary); border: 1px solid rgba(11,100,209,0.12); }
 .btn-danger { background: var(--color-danger); color: white; }
 
-/* Inputs */
+
 .input, textarea {
   width: 100%;
   padding: 0.6rem 0.75rem;
@@ -104,12 +101,12 @@ p { margin: 0 0 1rem 0; color: var(--color-muted); }
 
 .label { display:block; font-weight:600; margin-bottom:0.35rem; color:var(--color-text); }
 
-/* Form layout */
+
 .form-row { display:flex; gap:var(--gap); align-items:flex-start; }
 .form-col { flex:1; }
 .form-actions { display:flex; gap:0.75rem; align-items:center; }
 
-/* Pothole list */
+
 .pothole-table { display: none; }
 @media (min-width: 768px) { .pothole-table { display: block; } }
 .pothole-card { display: none; }
@@ -118,7 +115,7 @@ p { margin: 0 0 1rem 0; color: var(--color-muted); }
 .pothole-row { display:flex; gap:1rem; align-items:center; padding:0.75rem 0; border-bottom:1px solid rgba(15,23,36,0.04); }
 .pothole-thumb { width:64px; height:48px; object-fit:cover; border-radius:6px; }
 
-/* Navbar */
+
 nav { background: linear-gradient(180deg, rgba(255,255,255,0.9), rgba(255,255,255,0.85)); backdrop-filter: blur(6px); border-bottom: 1px solid rgba(15,23,36,0.04); }
 .nav-inner { display:flex; align-items:center; justify-content:space-between; gap:1rem; padding:0.5rem 1rem; }
 .brand { display:flex; align-items:center; gap:0.75rem; font-weight:700; color:var(--color-primary); }
@@ -141,39 +138,33 @@ nav { background: linear-gradient(180deg, rgba(255,255,255,0.9), rgba(255,255,25
 }
 
 
-/* Admin */
+
 .admin-page { padding: 1rem; }
 
-/* Map */
+
 .leaflet-container { width: 100%; height: 100%; border-radius: 8px; border: 1px solid rgba(15,23,36,0.04); box-sizing: border-box; }
 
-/* Image upload preview grid */
 .image-grid { display:grid; grid-template-columns: repeat(auto-fit,minmax(110px,1fr)); gap:0.5rem; }
 .image-preview { width:100%; height:100px; object-fit:cover; border-radius:8px; border:1px solid rgba(15,23,36,0.04); }
 
-/* Accessibility helpers */
 .sr-only { position:absolute; width:1px; height:1px; padding:0; margin:-1px; overflow:hidden; clip:rect(0,0,0,0); white-space:nowrap; border:0; }
 
-/* Small screens adjustments */
 @media (max-width: 520px) {
   .form-row { flex-direction:column; }
   .container { padding: 0.75rem; }
 }
-/* Full-bleed section helper */
 .full-bleed {
   width: 100vw;
   margin-left: calc(50% - 50vw);
   margin-right: calc(50% - 50vw);
 }
 
-/* Small utilities */
 .muted { color: var(--color-muted); }
 .status-pill { padding: 0.25rem 0.5rem; border-radius:999px; font-size:0.85rem; font-weight:600; }
 .status-pending { background: rgba(245,158,11,0.12); color: var(--color-warning); }
 .status-inprogress { background: rgba(11,100,209,0.08); color: var(--color-primary); }
 .status-fixed { background: rgba(16,163,127,0.08); color: var(--color-success); }
 
-/* ===== NAVBAR (TARMAC STYLE) ===== */
 
 .navbar {
   position: absolute;
@@ -211,7 +202,6 @@ nav { background: linear-gradient(180deg, rgba(255,255,255,0.9), rgba(255,255,25
   min-height: 64px;
 }
 
-/* Brand */
 .brand {
   display: flex;
   align-items: center;
@@ -229,7 +219,6 @@ nav { background: linear-gradient(180deg, rgba(255,255,255,0.9), rgba(255,255,25
   text-decoration: none;
 }
 
-/* Links */
 .nav-links {
   display: flex;
   align-items: center;
@@ -252,7 +241,7 @@ nav { background: linear-gradient(180deg, rgba(255,255,255,0.9), rgba(255,255,25
   background: #2a2a2a;
 }
 
-/* Primary actions */
+
 .nav-link.primary {
   background: #ff8c1a;
   color: #ffffff;
@@ -262,7 +251,7 @@ nav { background: linear-gradient(180deg, rgba(255,255,255,0.9), rgba(255,255,25
   background: #e67c12;
 }
 
-/* Danger */
+
 .nav-link.danger {
   color: #fca5a5;
 }
@@ -271,7 +260,6 @@ nav { background: linear-gradient(180deg, rgba(255,255,255,0.9), rgba(255,255,25
   background: rgba(239,68,68,0.2);
 }
 
-/* Badge */
 .badge {
   background: #3a3a3a;
   color: #fff;
@@ -281,14 +269,12 @@ nav { background: linear-gradient(180deg, rgba(255,255,255,0.9), rgba(255,255,25
   margin-left: 4px;
 }
 
-/* Admin email */
+
 .admin-email {
   font-size: 0.8rem;
   color: #b5b5b5;
   margin: 0 0.25rem;
 }
-
-/* Mobile */
 .mobile-menu-btn {
   display: none;
   background: transparent;
@@ -298,20 +284,21 @@ nav { background: linear-gradient(180deg, rgba(255,255,255,0.9), rgba(255,255,25
   cursor: pointer;
 }
 
-/* Theme Toggle */
+
 .theme-toggle {
+  position: absolute;
+  right: 4rem;
+  top: 50%;
+  transform: translateY(-50%);
   background: transparent;
   border: none;
   font-size: 1.2rem;
   cursor: pointer;
   padding: 0.5rem;
   border-radius: 8px;
-  transition: background 0.2s ease;
-  display: flex;
-  align-items: center;
-  justify-content: center;
   color: #f5f5f5;
 }
+
 
 .theme-toggle:hover {
   background: rgba(255, 255, 255, 0.1);
@@ -352,9 +339,13 @@ nav { background: linear-gradient(180deg, rgba(255,255,255,0.9), rgba(255,255,25
   .nav-link {
     width: 100%;
     text-align: left;
+    margin: 0;
+    border-radius: 0;
+    padding-left: 1rem;
+    padding-right: 1rem;
+    background: transparent;
   }
 }
-/* ===== REPORT FORM CARD ===== */
 .report-card {
   max-width: 640px;
   width: calc(100% - 2rem);
@@ -376,7 +367,6 @@ nav { background: linear-gradient(180deg, rgba(255,255,255,0.9), rgba(255,255,25
     inset 0 1px 0 rgba(255,255,255,0.02);
 }
 
-/* Title */
 .report-title {
   font-size: 1.55rem;
   font-weight: 800;
@@ -384,12 +374,12 @@ nav { background: linear-gradient(180deg, rgba(255,255,255,0.9), rgba(255,255,25
   letter-spacing: 0.2px;
 }
 
-/* Groups */
+
 .form-group {
   margin-bottom: 1.4rem;
 }
 
-/* Labels */
+
 .form-label {
   display: block;
   font-size: 0.78rem;
@@ -400,7 +390,7 @@ nav { background: linear-gradient(180deg, rgba(255,255,255,0.9), rgba(255,255,25
   letter-spacing: 0.05em;
 }
 
-/* Inputs */
+
 .form-input,
 .form-select {
   width: 100%;
@@ -435,13 +425,11 @@ nav { background: linear-gradient(180deg, rgba(255,255,255,0.9), rgba(255,255,25
   color: #6b7280;
 }
 
-/* Textarea */
 .form-input.textarea {
   resize: vertical;
   min-height: 110px;
 }
 
-/* File upload */
 .file-input-wrapper {
   position: relative;
   display: flex;
@@ -485,7 +473,6 @@ nav { background: linear-gradient(180deg, rgba(255,255,255,0.9), rgba(255,255,25
   color: #9ca3af;
 }
 
-/* Location */
 .location-box {
   background: linear-gradient(180deg, #1a1a1a, #141414);
   border: 1px solid #303030;
@@ -503,7 +490,6 @@ nav { background: linear-gradient(180deg, rgba(255,255,255,0.9), rgba(255,255,25
   color: #d1d5db;
 }
 
-/* Image preview */
 .image-grid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
@@ -519,7 +505,6 @@ nav { background: linear-gradient(180deg, rgba(255,255,255,0.9), rgba(255,255,25
   border: 1px solid #2f2f2f;
 }
 
-/* Error */
 .form-error {
   background: #3b0d0d;
   color: #fecaca;
@@ -529,7 +514,6 @@ nav { background: linear-gradient(180deg, rgba(255,255,255,0.9), rgba(255,255,25
   margin-bottom: 1.4rem;
 }
 
-/* Submit */
 .submit-btn {
   width: 100%;
   margin-top: 1.6rem;
@@ -632,17 +616,15 @@ nav { background: linear-gradient(180deg, rgba(255,255,255,0.9), rgba(255,255,25
   font-size: 0.75rem;
   opacity: 0.7;
 }
-/* FULL PAGE MAP VIEW */
 .map-page {
   width: 100vw;
-  height: 120vh; /* adjust if navbar height differs */
+  height: 120vh; 
   padding: 0;
   margin: 0;
   background: #0f0f0f;
   overflow: hidden;
 }
 
-/* DASHBOARD LAYOUT */
 .map-dashboard {
   display: grid;
   grid-template-columns: 200px 1fr;
@@ -657,7 +639,6 @@ nav { background: linear-gradient(180deg, rgba(255,255,255,0.9), rgba(255,255,25
   background: #0f1419;
 }
 
-/* SIDEBAR */
 .map-sidebar {
   background: linear-gradient(180deg, #1c1c1c, #121212);
   border-radius: 18px;
@@ -672,7 +653,7 @@ nav { background: linear-gradient(180deg, rgba(255,255,255,0.9), rgba(255,255,25
   color: #f3f4f6;
 }
 
-/* MAP CONTAINER */
+
 .map-container {
   position: relative;
   width: 100%;
@@ -686,14 +667,12 @@ nav { background: linear-gradient(180deg, rgba(255,255,255,0.9), rgba(255,255,25
   background: #1a202d;
 }
 
-/* LEAFLET MAP MUST FILL */
 .leaflet-map {
   width: 100%;
   height: 200%;
   min-height: calc(100vh - 120px);
 }
 
-/* REPORT CARDS */
 .report-card {
   background: #232323;
   border-radius: 14px;
@@ -713,7 +692,6 @@ nav { background: linear-gradient(180deg, rgba(255,255,255,0.9), rgba(255,255,25
   margin-bottom: 4px;
 }
 
-/* FILTER SECTION */
 .filters label {
   display: block;
   margin: 8px 0;
@@ -730,8 +708,6 @@ nav { background: linear-gradient(180deg, rgba(255,255,255,0.9), rgba(255,255,25
   font-size: 0.85rem;
   opacity: 0.85;
 }
-
-/* RESPONSIVE */
 @media (max-width: 900px) {
   .map-dashboard {
     grid-template-columns: 1fr;

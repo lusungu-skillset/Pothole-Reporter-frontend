@@ -12,12 +12,11 @@ export default function AdminPage() {
   const [error, setError] = useState(null)
   const [refreshing, setRefreshing] = useState(false)
   const [selectedPotholeId, setSelectedPotholeId] = useState(null)
-  const [activeTab, setActiveTab] = useState("dashboard") // dashboard, list, analytics
+  const [activeTab, setActiveTab] = useState("dashboard") 
   const { potholeCount, setPotholeCount } = useAppContext()
   const adminEmail = localStorage.getItem("adminEmail") || ""
   const authToken = localStorage.getItem("authToken")
 
-  // Create axios instance with auth header - update when token changes
   const getApiClient = () => {
     return axios.create({
       baseURL: "http://localhost:3005",
@@ -28,7 +27,6 @@ export default function AdminPage() {
     })
   }
 
-  // Fetch potholes from backend with optional filters
   const fetchPotholes = async (filters = {}) => {
     try {
       setRefreshing(true)
@@ -58,11 +56,9 @@ export default function AdminPage() {
     }
   }
 
-  // Fetch potholes on component mount and set up auto-refresh
   useEffect(() => {
     fetchPotholes()
 
-    // Auto-refresh every 5 seconds to reflect backend changes
     const interval = setInterval(fetchPotholes, 5000)
 
     return () => clearInterval(interval)
@@ -71,10 +67,8 @@ export default function AdminPage() {
   const handleUpdateStatus = async (id, newStatus) => {
     try {
       const apiClient = getApiClient()
-      // Update backend using PUT (backend expects PUT to update status)
       await apiClient.put(`/admin/dashboard/potholes/${id}`, { status: newStatus })
       
-      // Update local state
       setPotholes(potholes.map(pothole => 
         pothole.id === id ? { ...pothole, status: newStatus } : pothole
       ))
@@ -91,10 +85,8 @@ export default function AdminPage() {
 
     try {
       const apiClient = getApiClient()
-      // Delete from backend
       await apiClient.delete(`/admin/dashboard/potholes/${id}`)
       
-      // Update local state
       setPotholes(potholes.filter(pothole => pothole.id !== id))
       setPotholeCount(prev => prev - 1)
     } catch (err) {
@@ -108,7 +100,6 @@ export default function AdminPage() {
   }
 
   const handleAddNote = (potholeId, note) => {
-    // Notes are handled in the modal component
     console.log("Note added to pothole:", potholeId, note)
   }
 
@@ -120,7 +111,7 @@ export default function AdminPage() {
 
   return (
     <div className="container">
-      {/* HEADER */}
+  
       <div style={{
         marginTop: "5rem", 
         marginBottom: "1.5rem",
@@ -153,7 +144,7 @@ export default function AdminPage() {
           </div>
         </div>
 
-        {/* TABS */}
+        
         <div style={{ display: "flex", gap: "0.75rem", borderBottom: "1px solid #3a3a3a", paddingBottom: "1rem" }}>
           <button
             onClick={() => setActiveTab("dashboard")}
@@ -219,14 +210,12 @@ export default function AdminPage() {
         </div>
       )}
 
-      {/* DASHBOARD TAB */}
       {activeTab === "dashboard" && (
         <div style={{ display: "flex", flexDirection: "column", gap: "1.5rem" }}>
           <DashboardStats potholes={potholes} apiClient={getApiClient()} />
         </div>
       )}
 
-      {/* LIST TAB */}
       {activeTab === "list" && (
         <div>
           <PotholeList
@@ -240,14 +229,14 @@ export default function AdminPage() {
         </div>
       )}
 
-      {/* ANALYTICS TAB */}
+  
       {activeTab === "analytics" && (
         <div style={{ display: "flex", flexDirection: "column", gap: "1.5rem" }}>
           <Analytics potholes={potholes} />
         </div>
       )}
 
-      {/* POTHOLE DETAILS MODAL */}
+    
       <PotholeDetailsModal
         pothole={selectedPothole}
         isOpen={!!selectedPotholeId}

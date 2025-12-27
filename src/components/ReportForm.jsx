@@ -150,7 +150,7 @@ export default function ReportForm({ selectedLocation, onSubmit }) {
         border: "1px solid #8B5C2A",
         borderRadius: "8px",
         fontSize: "0.9rem",
-        background: "#A0522D", // brown
+        background: "#A0522D", 
         color: "#fff",
       }}
     >

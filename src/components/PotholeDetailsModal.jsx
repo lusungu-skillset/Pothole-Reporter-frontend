@@ -33,7 +33,6 @@ export default function PotholeDetailsModal({
   })
 
   useEffect(() => {
-    // Initialize with the prop data first
     if (pothole) {
       setPotholeData(pothole)
       setNewStatus(pothole.status || "Pending")
@@ -54,7 +53,6 @@ export default function PotholeDetailsModal({
       console.log("Fetched pothole details:", response.data)
       console.log("Photos array from API:", response.data.photos)
       
-      // Merge fetched data with original pothole to preserve photos if API doesn't include them
       const mergedData = {
         ...pothole,
         ...response.data,
@@ -67,15 +65,12 @@ export default function PotholeDetailsModal({
       setNewStatus(response.data.status || pothole.status || "Pending")
     } catch (err) {
       console.error("Error fetching pothole details:", err)
-      // Fall back to original pothole prop
       setPotholeData(pothole)
     }
   }
 
   const fetchNotes = async () => {
     try {
-      // This assumes your backend has an endpoint to fetch notes
-      // If not, we'll display notes as they come
       const storedNotes = localStorage.getItem(`pothole-notes-${pothole.id}`)
       if (storedNotes) {
         setNotes(JSON.parse(storedNotes))
@@ -87,14 +82,12 @@ export default function PotholeDetailsModal({
 
   const fetchStaffList = async () => {
     try {
-      // Try to fetch staff list from backend
       const response = await apiClient.get("/staff")
       setStaffList(response.data || [])
     } catch (err) {
-      // If no staff endpoint, use default list
       setStaffList([
-        { id: 1, name: "John Muñoz" },
-        { id: 2, name: "Sarah Chen" },
+        { id: 1, name: "Lusungu" },
+        { id: 2, name: "Lusper mhango" },
         { id: 3, name: "Michael Banda" },
       ])
     }
@@ -134,7 +127,6 @@ export default function PotholeDetailsModal({
   const handleAssignStaff = async () => {
     setLoading(true)
     try {
-      // Update backend with assigned staff
       await apiClient.put(`/potholes/${pothole.id}`, {
         assignedStaff: assignedStaff,
       })
@@ -336,13 +328,13 @@ export default function PotholeDetailsModal({
           </div>
         </div>
 
-        {/* MAIN CONTENT */}
+        
         <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "2rem", marginBottom: "2rem" }}>
-          {/* LEFT: DETAILS */}
+          
           <div>
             <h3 style={{ margin: "0 0 1rem 0", fontSize: "1rem", fontWeight: 600, color: "var(--color-text)" }}>Details</h3>
 
-            <div style={{ marginBottom: "1.5rem" }}>
+            <div style={{ marginBottom: "1.5rem", background: " rgba(5, 5, 5, 0.06)" }}>
               <h4 style={{ margin: "0 0 0.5rem 0", fontSize: "0.9rem", fontWeight: 600, color: "var(--color-text)" }}>
                 Description
               </h4>
@@ -351,37 +343,7 @@ export default function PotholeDetailsModal({
               </p>
             </div>
 
-            {/* REPORTER INFO */}
-            <div style={{ marginBottom: "1.5rem", padding: "1rem", background: "var(--color-bg)", borderRadius: "8px", transition: "background 0.3s ease" }}>
-              <h4 style={{ margin: "0 0 0.75rem 0", fontSize: "0.9rem", fontWeight: 600, color: "var(--color-text)" }}>
-                Reporter Information
-              </h4>
-              <div style={{ fontSize: "0.9rem", lineHeight: 1.8, color: "var(--color-muted)" }}>
-                <div>
-                  <strong style={{ color: "var(--color-text)" }}>Name:</strong> {displayPothole?.reporterName || "-"}
-                </div>
-                <div>
-                  <strong style={{ color: "var(--color-text)" }}>Phone:</strong> {displayPothole?.reporterPhone ? (
-                    <a href={`tel:${displayPothole?.reporterPhone}`} style={{ color: "var(--color-primary)" }}>
-                      {displayPothole?.reporterPhone}
-                    </a>
-                  ) : (
-                    "-"
-                  )}
-                </div>
-                <div>
-                  <strong style={{ color: "var(--color-text)" }}>Email:</strong> {displayPothole?.reporterEmail ? (
-                    <a href={`mailto:${displayPothole?.reporterEmail}`} style={{ color: "var(--color-primary)" }}>
-                      {displayPothole?.reporterEmail}
-                    </a>
-                  ) : (
-                    "-"
-                  )}
-                </div>
-              </div>
-            </div>
-
-            {/* COORDINATES */}
+      
             <div style={{ padding: "1rem", background: "var(--color-bg)", borderRadius: "8px", transition: "background 0.3s ease" }}>
               <h4 style={{ margin: "0 0 0.75rem 0", fontSize: "0.9rem", fontWeight: 600, color: "var(--color-text)" }}>
                 Coordinates

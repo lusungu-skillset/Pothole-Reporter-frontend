@@ -8,7 +8,8 @@ export default function PotholeList({
   onSelectPothole,
   onFiltersChange,
   apiClient,
-}) {
+}) 
+{
   const [searchTerm, setSearchTerm] = useState("")
   const [filterStatus, setFilterStatus] = useState("all")
   const [filterSeverity, setFilterSeverity] = useState("all")
@@ -20,39 +21,50 @@ export default function PotholeList({
   const [showBulkActions, setShowBulkActions] = useState(false)
   const [openActionMenuId, setOpenActionMenuId] = useState(null)
 
-  // Extract unique districts
   const districts = useMemo(() => {
     const unique = new Set(potholes.map(p => p.district || "Unknown").filter(Boolean))
     return Array.from(unique).sort()
   }, [potholes])
 
-  // Filter and search logic
+  const formatDate = (value) => {
+    if (!value) return "-";
+    const date = new Date(value);
+    if (isNaN(date.getTime())) return "-";
+    return date.toLocaleString("en-GB", {
+      year: "numeric",
+      month: "short",
+      day: "2-digit",
+      hour: "2-digit",
+      minute: "2-digit",
+    });
+  };
+
   const filteredPotholes = useMemo(() => {
     return potholes.filter(pothole => {
       const matchesSearch =
         (pothole.roadName?.toLowerCase().includes(searchTerm.toLowerCase()) ||
           pothole.description?.toLowerCase().includes(searchTerm.toLowerCase()) ||
           pothole.district?.toLowerCase().includes(searchTerm.toLowerCase()) ||
-          pothole.location?.toLowerCase().includes(searchTerm.toLowerCase())) ?? false
+          pothole.location?.toLowerCase().includes(searchTerm.toLowerCase())) ?? false;
 
       const matchesStatus =
-        filterStatus === "all" || pothole.status === filterStatus
+        filterStatus === "all" || pothole.status === filterStatus;
 
       const matchesSeverity =
-        filterSeverity === "all" || pothole.severity === filterSeverity
+        filterSeverity === "all" || pothole.severity === filterSeverity;
 
       const matchesDistrict =
-        filterDistrict === "all" || pothole.district === filterDistrict
+        filterDistrict === "all" || pothole.district === filterDistrict;
 
-      let matchesDate = true
+      let matchesDate = true;
       if (filterDateFrom || filterDateTo) {
-        const potholeDate = new Date(pothole.dateReported || pothole.createdAt)
-        if (filterDateFrom && new Date(filterDateFrom) > potholeDate) matchesDate = false
-        if (filterDateTo && new Date(filterDateTo) < potholeDate) matchesDate = false
+        const potholeDate = new Date(pothole.reportedAt || pothole.dateReported || pothole.createdAt);
+        if (filterDateFrom && new Date(filterDateFrom) > potholeDate) matchesDate = false;
+        if (filterDateTo && new Date(filterDateTo) < potholeDate) matchesDate = false;
       }
 
-      return matchesSearch && matchesStatus && matchesSeverity && matchesDistrict && matchesDate
-    })
+      return matchesSearch && matchesStatus && matchesSeverity && matchesDistrict && matchesDate;
+    });
   }, [
     potholes,
     searchTerm,
@@ -63,7 +75,7 @@ export default function PotholeList({
     filterDateTo,
   ])
 
-  // Sort logic
+  
   const sortedPotholes = useMemo(() => {
     const sorted = [...filteredPotholes]
     switch (sortBy) {
@@ -77,7 +89,7 @@ export default function PotholeList({
         break
       case "date":
       default:
-        sorted.sort((a, b) => new Date(b.dateReported || b.createdAt) - new Date(a.dateReported || a.createdAt))
+        sorted.sort((a, b) => new Date(b.reportedAt || b.dateReported || b.createdAt) - new Date(a.reportedAt || a.dateReported || a.createdAt))
     }
     return sorted
   }, [filteredPotholes, sortBy])
@@ -122,10 +134,10 @@ export default function PotholeList({
       p.location || "-",
       p.severity || "-",
       p.status || "-",
-      p.dateReported || p.createdAt || "-",
-      p.reporterName || "-",
-      p.reporterPhone || "-",
-      p.reporterEmail || "-",
+      p.reportedAt || p.dateReported || p.createdAt,
+      p.reporterName || p.reporter_name || "-",
+      p.reporterPhone || p.reporter_phone || "-",
+      p.reporterEmail || p.reporter_email || "-",
     ])
 
     const csv = [headers, ...rows]
@@ -180,13 +192,12 @@ export default function PotholeList({
     <div 
       style={{ display: "flex", flexDirection: "column", gap: "1.5rem" }}
       onClick={() => {
-        // Close menu when clicking outside of it
         if (openActionMenuId) {
           setOpenActionMenuId(null)
         }
       }}
     >
-      {/* FILTERS */}
+      
       <div
         className="card"
         style={{
@@ -209,7 +220,6 @@ export default function PotholeList({
             marginBottom: "1rem",
           }}
         >
-          {/* SEARCH */}
           <div>
             <label style={{ display: "block", fontSize: "0.85rem", fontWeight: 600, marginBottom: "0.4rem", color: "#d4d4d4" }}>
               Search (Road, Description, District)
@@ -583,7 +593,11 @@ export default function PotholeList({
                     {pothole.district || "-"}
                   </td>
                   <td style={{ padding: "1rem 0.75rem", fontSize: "0.9rem", color: "#9ca3af" }}>
-                    {pothole.location || "-"}
+                    {pothole.location
+                      ? pothole.location
+                      : pothole.latitude && pothole.longitude
+                        ? `${pothole.latitude}, ${pothole.longitude}`
+                        : "-"}
                   </td>
                   <td style={{ padding: "1rem 0.75rem" }}>
                     <span
@@ -618,9 +632,7 @@ export default function PotholeList({
                     </span>
                   </td>
                   <td style={{ padding: "1rem 0.75rem", fontSize: "0.9rem", color: "#9ca3af" }}>
-                    {pothole.dateReported || pothole.createdAt
-                      ? new Date(pothole.dateReported || pothole.createdAt).toLocaleDateString()
-                      : "-"}
+                    {formatDate(pothole.reportedAt || pothole.dateReported || pothole.createdAt)}
                   </td>
                   <td
                     style={{
@@ -673,17 +685,17 @@ export default function PotholeList({
                           style={{
                             width: "100%",
                             padding: "0.75rem 1rem",
-                            background: "#A0522D", 
+                            background: "#2a2a2a",
                             color: "#fff",
                             border: "none",
                             textAlign: "left",
                             fontSize: "0.85rem",
                             cursor: "pointer",
-                            borderBottom: "1px solid #8B5C2A",
+                            borderBottom: "1px solid #161615ff",
                             transition: "background 0.2s ease",
                           }}
-                          onMouseEnter={(e) => e.target.style.background = "#8B5C2A"}
-                          onMouseLeave={(e) => e.target.style.background = "#A0522D"}
+                          onMouseEnter={(e) => e.target.style.background = "#20201fff"}
+                          onMouseLeave={(e) => e.target.style.background = "#1d1d1cff"}
                         >
                           👁️ View Details
                         </button>
@@ -722,14 +734,14 @@ export default function PotholeList({
                               style={{
                                 width: "100%",
                                 padding: "0.75rem 1rem",
-                                background: "transparent",
+                                background: "#2a2a2a",
                                 border: "none",
                                 borderBottom: "1px solid #2a2a2a",
                                 borderRadius: 0,
                                 fontSize: "0.85rem",
                                 fontWeight: 600,
                                 cursor: "pointer",
-                                color: "#141313ff",
+                                color: "#ffffff",
                                 appearance: "none",
                                 paddingRight: "2rem",
                                 backgroundImage: "url(\"data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12'%3E%3Cpath fill='%23e6e6e6' d='M6 9L1 4h10z'/%3E%3C/svg%3E\")",
